@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.school_management.mapper.DashboardMapper">
+
+    <select id="getTotalDepartmentCnt" resultType="java.lang.Integer">
+        select count(*) from department_info
+    </select>
+    <select id="getActiveDepartmentCnt" resultType="java.lang.Integer">
+        select count(*) from department_info where di_status=1
+    </select>
+    <select id="getDeactiveDepartmentCnt" resultType="java.lang.Integer">
+        select count(*) from department_info where di_status=0
+    </select>
+
+    <select id="getTotalTeacherCnt" resultType="java.lang.Integer">
+        select count(*) from teacher_info
+    </select>
+    <select id="getWorkTeacherCnt" resultType="java.lang.Integer">
+        select count(*) from teacher_info where ti_status=1
+    </select>
+    <select id="getDayOffTeacherCnt" resultType="java.lang.Integer">
+        select count(*) from teacher_info where ti_status=0
+    </select>
+
+
+    <select id="getTotalStudentCnt" resultType="java.lang.Integer">
+        select count(*) from student_info 
+    </select>
+    <select id="getAttendStudentCnt" resultType="java.lang.Integer">
+        select count(*) from student_info where si_status=1
+    </select>
+    <select id="getDayOffStudentCnt" resultType="java.lang.Integer">
+        select count(*) from student_info where si_status=2
+    </select>
+    <select id="getLeaveStudentCnt" resultType="java.lang.Integer">
+        select count(*) from student_info where si_status=0
+    </select>
+
+    <select id="getTotalSubjectcnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info
+    </select>
+    <select id="getActiveSubjectcnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info where csi_status=1
+    </select>
+    <select id="getDeactiveSubjectcnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info where csi_status=2
+    </select>
+    <select id="getFinishSubjectCnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info where csi_status=0
+    </select>
+</mapper>
