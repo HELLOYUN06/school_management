@@ -8,10 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <%@include file="/WEB-INF/includes/header.jsp"%>
     <link rel="stylesheet" href="/assets/css/index.css">
+    <script>
+        $(function(){
+            $(".main_menu a:nth-child(1)").addClass("active")
+        })
+    </script>
 </head>
 <body>
-    <%@include file="/WEB-INF/includes/header.jsp"%>
     <main>
         ${cnt.department}
         ${cnt.teacher}
