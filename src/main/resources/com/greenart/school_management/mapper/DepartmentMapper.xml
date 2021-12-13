@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.school_management.mapper.DepartmentMapper">
+    <select id="getDepartmentInfo" resultType="com.greenart.school_management.data.DepartmentVO">
+        select * from department_info order by di_seq desc
+        limit 10 offset #{offset}
+    </select>
+    <select id="getDepartmentCount" resultType="java.lang.Integer">
+        select count(*) from department_info
+    </select>
+    <insert id="addDepartment">
+        insert into department_info(di_name, di_graduate_score, di_status)
+        values(#{di_name},#{di_graduate_score},#{di_status})
+    </insert>
+
+    <delete id="deleteDepartment">
+        delete from department_info where di_seq=#{seq}
+    </delete>
+</mapper>

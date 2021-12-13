@@ -10,11 +10,7 @@
     <title>Document</title>
     <%@include file="/WEB-INF/includes/header.jsp"%>
     <link rel="stylesheet" href="/assets/css/department_list.css">
-    <script>
-        $(function(){
-            $(".main_menu a:nth-child(2)").addClass("active")
-        })
-    </script>
+    <script src="/assets/js/department.js"></script>
 </head>
 <body>
     <main>
@@ -41,6 +37,25 @@
                         </tr>
                     </thead>
                         <tbody>
+                            <c:if test="${data.total == 0}">
+                                <tr>
+                                    <td id="nodata" colspan="6">데이터가 없습니다.</td>
+                                </tr>
+                            </c:if>
+                            <c:forEach items="${data.list}" var="d">
+                                <tr>
+                                    <td>${d.di_seq}</td>
+                                    <td>${d.di_name} 공학과</td>
+                                    <td>${d.di_graduate_score}</td>
+                                    <td>${d.di_reg_dt}</td>
+                                    <td>${d.di_mod_dt}</td>
+                                    <td>
+                                        <button class="modify_btn" data-seq="${d.di_seq}"><i class="fas fa-pencil-alt"></i></button>
+                                        <button class="delete_btn" data-seq="${d.di_seq}"><i class="fas fa-minus-circle"></i></button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            <!--
                             <tr>
                                 <td>1234</td>
                                 <td>컴퓨터 공학과</td>
@@ -63,21 +78,44 @@
                                     <button class="delete_btn"><i class="fas fa-minus-circle"></i></button>
                                 </td>
                             </tr>
+                            -->
                         </tbody>
                 </table>
             </div>
             <div class="pager_area">
                 <button id="prev"><i class="fas fa-chevron-left"></i></button>
-                <div class="pagers"> 
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
+                <div class="pagers">
+                    <c:forEach begin="1" end="${data.pageCnt}" var="i">
+                        <a href="/department?offset=${(i-1)*10}">${i}</a>
+                    </c:forEach>
                 </div>
                 <button id="next"><i class="fas fa-chevron-right"></i> </button>
             </div>
         </div>
     </main>
+    <div class="popup_wrap">
+        <div class="popup" id="department_add">
+            <div class="top_area">
+                <div class="icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <h2>학과 추가</h2>   
+                <p>학과 정보를 입력해주세요</p>
+            </div>
+            <div class="content_area">
+                <input type="text" id="dep_name" placeholder="학과 명"><br>
+                <input type="number" id="dep_score" placeholder="졸업 학점">
+                <select id="dep_status">
+                    <option value="1">운영중</option>
+                    <option value="2">보류</option>
+                    <option value="3">폐지예정</option>
+                </select>
+            </div>
+            <div class="btn_area">
+                <button id="add_dep">등록하기</button>
+                <button id="cancel_dep">취소하기</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
