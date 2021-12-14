@@ -27,7 +27,7 @@
             <div class="main_menu">
                 <a href="/"><i class="fas fa-columns"></i> 대시보드</a>
                 <a href="/department"><i class="fas fa-school"></i> 학과 관리</a>
-                <a href="#"><i class="fas fa-user-tie"></i> 교직원 관리</a>
+                <a href="/teacher"><i class="fas fa-user-tie"></i> 교직원 관리</a>
                 <a href="#"><i class="fas fa-user-graduate"></i> 학생 관리</a>
                 <a href="#"><i class="fas fa-chalkboard-teacher"></i> 수업 관리</a>
             </div>

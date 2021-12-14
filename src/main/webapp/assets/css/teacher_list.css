@@ -1,0 +1,6 @@
+.popup .content_area input {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
+    font-size: 14px; font-weight: 400; padding: 5px 15px; box-sizing: border-box;
+    border-radius: 15px; margin-bottom: 10px; outline: none;
+}
+#teacher_status {width: 150px; border-radius: 15px; border: 1px solid#ccc; padding :5px 15px;
+}

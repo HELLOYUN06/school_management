@@ -16,8 +16,11 @@ public class DepartmentController {
     @Autowired
     DepartmentService service;
     @GetMapping("/department")
-    public String getDepartment(Model model, @RequestParam @Nullable Integer offset){
-        Map<String, Object> resultMap = service.getDepartmentList(offset);
+    public String getDepartment(
+        Model model, @RequestParam @Nullable Integer offset,
+        @RequestParam @Nullable String keyword
+    ){
+        Map<String, Object> resultMap = service.getDepartmentList(offset, keyword);
         model.addAttribute("data", resultMap);
         return "/department/list";
     }

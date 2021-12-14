@@ -84,6 +84,8 @@ main > h1 {font-size: 36px; padding-bottom: 30px; margin-bottom: 30px; border-bo
 }
 .btn_area #add_dep {background-color: #999;}
 .btn_area #add_dep:hover {background-color: #333;}
+.btn_area #modify_dep {background-color: #999;}
+.btn_area #modify_dep:hover {background-color: #333;}
 .btn_area #cancel_dep { background-color: rgb(255, 194, 194);}
 .btn_area #cancel_dep:hover { background-color: rgb(255, 83, 83);}
 
