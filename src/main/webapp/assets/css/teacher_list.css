@@ -1,6 +1,50 @@
-.popup .content_area input {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
+.popup {margin-top: -280px; width: 500px;}
+.popup .content_area {width: 80%;}
+.popup .content_area input, .popup .content_area button
+{
+    width: calc(50% - 10px); padding: 0; margin: 0; border: 1px solid #ccc;
     font-size: 14px; font-weight: 400; padding: 5px 15px; box-sizing: border-box;
-    border-radius: 15px; margin-bottom: 10px; outline: none;
+    border-radius: 15px; margin-bottom: 10px; outline: none; margin: 5px;
 }
+.popup .content_area #teacher_dep_name{width: calc(70% - 10px);}
+.popup .content_area #search_dep{width: calc(30% - 10px);}
+.popup .content_area #teacher_email{width: calc(70% - 10px);}
+.popup .content_area #teacher_status{width: calc(30% - 10px); margin: 5px;}
 #teacher_status {width: 150px; border-radius: 15px; border: 1px solid#ccc; padding :5px 15px;
+}
+#search_type {border: 0; padding-right: 5px; margin-right: 5px; outline: none;}
+.department_search{position: fixed; z-index: 9999999999;
+    background-color: #fff; left: 50%; margin-left: -200px;
+    top: 50%; margin-top: -100px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    width: 350px; display: none;
+}
+.dep_search_box{
+    padding:0 10px; font-size: 0; border-bottom: 1px solid #000; 
+}
+.dep_search_box * {font-size: 18px;}
+.dep_search_box input {border: 0; padding: 0; margin: 0; outline:none; width: 95%;
+    padding: 10px 0;}
+.dep_search_box button {border: 0; padding: 0; margin: 0; outline:none; cursor: pointer;
+position: absolute; right: 10px; top: 10px; background-color: transparent; color: #666;}
+.search_result{
+    min-height: 300px; overflow-y: scroll; height: 200px;
+}
+.search_result ul li {padding: 10px; }
+.search_result a {text-decoration: none; color: #555; display: inline-block; vertical-align: middle; }
+.search_result a:hover {text-decoration: underline; color: #333; font-weight: 700;}
+.search_result span{font-size: 12px; display: inline-block; vertical-align: middle; padding: 5px 10px; margin-left: 10px;
+    color: #fff; background-color: #333; border-radius: 20px;    
+}
+.search_result .status1{background-color: rgba(17,226,27);}
+.search_result .status2{background-color: rgba(251,186,64);}
+.search_result .status3{background-color: rgba(255,110,26);}
+.search_result .statu41{background-color: rgba(255,23,23);}
+.dep_search_buttons {text-align: center; padding: 10px; border-top: 1px solid #ddd;
+    background-color: #f3f3f3;}
+#dep_search_close {border: 0; background-color: #666; color: #fff;
+    border-radius: 3px; width: 80px; height: 30px; cursor: pointer;}
+
+.teacher_status span{
+    display: inline-block; padding: 5px 10px; color: #fff; font-size: 12px;
+    border-radius: 3px;
 }

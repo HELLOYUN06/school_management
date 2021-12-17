@@ -34,4 +34,8 @@
         INSERT INTO school_work_db.department_history(deph_type, deph_content, deph_di_seq)
         VALUES(#{deph_type},#{deph_content},#{deph_di_seq})
     </insert>
+
+    <select id="getDepartmentByKeyword" resultType="com.greenart.school_management.data.DepartmentVO">
+        select di_seq, di_name, di_status from department_info where di_name like #{keyword}
+    </select>
 </mapper>

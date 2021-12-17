@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.school_management.mapper.TeacherMapper">
+    <insert id="addTeacherInfo">
+        INSERT INTO school_work_db.teacher_info
+        (ti_di_seq, ti_number, ti_name, ti_birth, ti_pwd, ti_phone_num, ti_email, ti_status)
+        VALUES
+        (#{ti_di_seq}, #{ti_number}, #{ti_name}, #{ti_birth}, #{ti_pwd}, #{ti_phone_num}, #{ti_email}, #{ti_status});
+    </insert>
+    <select id="getTeacherList" resultType="com.greenart.school_management.data.TeacherVO">
+        select ti_seq, department_name, ti_number, ti_name, ti_birth, ti_phone_num, ti_email, ti_reg_dt, ti_mod_dt, ti_status 
+        from 
+        (
+            select a.*, b.di_name as department_name 
+            from teacher_info a left outer join department_info b 
+            on a.ti_di_seq = b.di_seq
+        ) c
+        <if test="type == 'dept'">
+            where department_name like #{keyword}
+        </if>
+        <if test="type == 'name'">
+            where ti_name like #{keyword}
+        </if>
+        order by ti_seq desc
+        limit 10 offset #{offset}
+    </select>
+    <select id="getTeacherCnt" resultType="java.lang.Integer">
+        select count(*) from (
+            select a.*, b.di_name as department_name 
+            from teacher_info a left outer join department_info b 
+            on a.ti_di_seq = b.di_seq
+        ) c
+        <if test="type == 'dept'">
+            where department_name like #{keyword}
+        </if>
+        <if test="type == 'name'">
+            where ti_name like #{keyword}
+        </if>
+    </select>
+</mapper>
