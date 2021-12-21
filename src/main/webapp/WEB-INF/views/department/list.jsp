@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" 
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,8 +48,8 @@
                                     <td>${d.di_seq}</td>
                                     <td>${d.di_name}</td>
                                     <td>${d.di_graduate_score}</td>
-                                    <td>${d.di_reg_dt}</td>
-                                    <td>${d.di_mod_dt}</td>
+                                    <td><fmt:formatDate value="${d.di_reg_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
+                                    <td><fmt:formatDate value="${d.di_mod_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
                                     <td>
                                         <button class="modify_btn" data-seq="${d.di_seq}"><i class="fas fa-pencil-alt"></i></button>
                                         <button class="delete_btn" data-seq="${d.di_seq}"><i class="fas fa-minus-circle"></i></button>

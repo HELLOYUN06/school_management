@@ -13,6 +13,9 @@ public class MainController {
     @GetMapping("/")
     public String getMain(Model model){
         model.addAttribute("cnt", service.getCounts());
+        model.addAttribute("update", service.getUpdateDate());
+        model.addAttribute("value", 1234567890);
+        model.addAttribute("value2", 123);
         return "/index";
     }
 }

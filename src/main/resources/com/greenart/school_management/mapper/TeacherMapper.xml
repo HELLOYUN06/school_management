@@ -38,4 +38,37 @@
             where ti_name like #{keyword}
         </if>
     </select>
+    <delete id="deleteTeacherInfo">
+        delete from teacher_info where ti_seq = #{seq}
+    </delete>
+    <select id="isExistTeacher" resultType="java.lang.Integer">
+        select count(*) from teacher_info where ti_seq = #{seq}
+    </select>
+    <select id="getTeacherInfoBySeq" resultType="com.greenart.school_management.data.TeacherVO">
+        select 
+            ti_seq, ti_di_seq, ti_number, ti_birth, ti_name,
+            ti_phone_num, ti_email, ti_status, di_name as department_name
+        from 
+            teacher_info a left outer join department_info b 
+        on 
+            a.ti_di_seq = b.di_seq
+        where 
+            ti_seq = #{seq}
+    </select>
+    <update id="updateTeacherInfo">
+        update teacher_info set 
+            ti_di_seq = #{ti_di_seq}, ti_name = #{ti_name}, ti_number = #{ti_number},ti_birth = #{ti_birth},
+            ti_phone_num = #{ti_phone_num},ti_email = #{ti_email},ti_status = #{ti_status}, ti_mod_dt = NOW()
+        where ti_seq = #{ti_seq}
+    </update>
+    <insert id="insertTeacherHistory">
+        INSERT INTO teacher_info_history
+        (tih_ti_seq, tih_type, tih_content)
+        VALUES
+        (#{tih_ti_seq},#{tih_type},#{tih_content});
+    </insert>
+    <select id="getRecentAddTeacherSeq" resultType="java.lang.Integer">
+        select ti_seq from teacher_info order by ti_seq desc limit 1
+    </select>
+    
 </mapper>

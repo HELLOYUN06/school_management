@@ -1,6 +1,6 @@
 package com.greenart.school_management.data;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.Data;
 @Data
@@ -17,4 +17,8 @@ public class TeacherVO {
     private String ti_email;
     private Integer ti_status;
     private String department_name;
+
+    public String makeHistoryStr(){
+        return ti_di_seq+"|"+ti_number+"|"+ti_name+"|"+ti_birth+"|"+ti_phone_num+"|"+ti_email+"|"+ti_status;
+    }
 }
